@@ -12,11 +12,12 @@ body {
   width: 100vw;
   height: 100vh;
   font-family: 'Poppins', sans-serif;
+  background-color: #f1f1f1;
 }
 .container {
-  border: 1px solid black;
   padding: 4rem;
   display: flex;
+  position: relative;
 }
 .sidebar {
   width: 17%;
@@ -55,6 +56,7 @@ body {
   width: 100%;
   border-radius: 7px;
   padding: 0.5rem 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .image {
   width: 100%;
@@ -100,6 +102,7 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   border: none;
   font-size: 16px;
   outline: none;
+  background-color: #f1f1f1;
 }
 .search > p {
   font-weight: bold;
@@ -121,7 +124,7 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   top: 53%;
   border: none;
   outline: none;
-  background-color: white;
+  background-color: #f1f1f1;
   font-size: 24px;
   color: rgba(0, 0, 0, 0.623);
   cursor: pointer;
@@ -154,7 +157,7 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   overflow-x: auto;
 }
 .list-wrapper::-webkit-scrollbar {
-  background-color: white;
+  background-color: #f1f1f1;
   width: 0;
 }
 .catagory-item {
@@ -166,6 +169,7 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   color: white;
   display: grid;
   place-items: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .transaction-list h3 {
   font-size: 22px;
@@ -181,4 +185,73 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   display: flex;
   padding: 0.6rem 3rem;
   justify-content: space-between;
+}
+.graphs {
+  box-shadow: rgba(0, 0, 0, 0.26) 1px 1px 4px;
+  padding: 0.6rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  background-color: #fff;
+}
+.graphs h5 {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.graphs p {
+  margin: 0.2rem 0;
+}
+
+.expense-form {
+  width: 40%;
+  position: absolute;
+  background-color: white;
+  left: 27%;
+  top: 25%;
+  padding: 2rem;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.expense-form h2 {
+  width: 60%;
+  margin: 0.6rem auto;
+}
+.inputs {
+  margin: 0.6rem auto;
+  width: 60%;
+}
+.inputs label {
+  font-size: 14px;
+}
+.inputs input {
+  height: 30px;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.396);
+  border-radius: 5px;
+  outline: none;
+  font-size: 15px;
+  margin: 0.2rem 0;
+  width: 94%;
+}
+.expense-form button {
+  display: block;
+  margin: 0.9rem auto;
+  width: 60%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #70c0ff;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+.form-btn {
+  padding: 0.7rem 0;
+}
+.form-btn a {
+  text-decoration: none;
+  padding: 0.6rem 1.3rem;
+  background-color: rgba(224, 47, 47, 0.852);
+  border-radius: 5px;
+  color: white;
 }
