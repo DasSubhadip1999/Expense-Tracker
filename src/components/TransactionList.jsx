@@ -1,6 +1,5 @@
 import React from 'react'
 import TransactionItem from './TransactionItem';
-import transactionData from '../data/transactionData';
 import { useContext } from 'react';
 import TransactionContext from '../context/TransactionContext';
 

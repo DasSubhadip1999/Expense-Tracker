@@ -14,6 +14,14 @@ const catagoryData = [
     {
         id : "c4",
         catagoryTitle : "Entertailment"
+    },
+    {
+        id : "c5",
+        catagoryTitle : "Shopping"
+    },
+    {
+        id : "c6",
+        catagoryTitle : "Food"
     }
 ];
 

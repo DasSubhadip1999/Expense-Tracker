@@ -186,11 +186,13 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   padding: 0.6rem 3rem;
   justify-content: space-between;
   position: relative;
+  text-transform: capitalize;
 }
 .transaction-item > h2 {
   margin-top: 7px;
   font-size: 22px;
 }
+
 .fa-trash {
   position: absolute;
   font-size: 17px;
@@ -201,6 +203,14 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
 }
 .fa-trash:hover {
   color: red;
+}
+.fa-pen-to-square {
+  position: absolute;
+  font-size: 18px;
+  left: 2%;
+  top: 35%;
+  color: rgba(0, 0, 0, 0.653);
+  cursor: pointer;
 }
 .graphs {
   box-shadow: rgba(0, 0, 0, 0.26) 1px 1px 4px;
@@ -288,4 +298,11 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
 .form-btn button:hover {
   box-shadow: rgba(214, 189, 3, 0.3) 0px 0px 0px 3px;
   background-color: rgba(224, 47, 47, 0.952);
+}
+.form-btn button:disabled,
+.form-btn button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }

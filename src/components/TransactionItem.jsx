@@ -3,9 +3,11 @@ import TransactionContext from '../context/TransactionContext';
 
 
 function TransactionItem({title, date, amount,id}) {
-  const {deleteTransaction} = useContext(TransactionContext);
+  const {deleteTransaction, editExpenseFn, } = useContext(TransactionContext);
+  let expenseItem = {id,title, date, amount}
   return (
     <div className='transaction-item'>
+        <i onClick={() => editExpenseFn(expenseItem)} className="fa-regular fa-pen-to-square"></i>
         <div>
             <h4>{title}</h4>
             <p>{date}</p>
