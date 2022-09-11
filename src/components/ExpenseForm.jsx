@@ -3,22 +3,25 @@ import Input from './formComponents/Input'
 import {useState} from "react";
 import { useContext } from 'react';
 import TransactionContext from '../context/TransactionContext';
-import {Link} from "react-router-dom";
+import StyleContext from '../context/StyleContext';
+
+
 
 function ExpenseForm() {
-    const {transaction} = useContext(TransactionContext);
-    const [expenseList, setExpenseList] = useState(transaction)
+    const {newStyle} = useContext(StyleContext);
+    const {hideForm} = useContext(StyleContext);
+    //console.log(newStyle)
+    const {handleClick} = useContext(TransactionContext);
     const obj = {
         title : "",
         date : "",
         amount : ""
     }
     const [expense, setExpense] = useState(obj);
-
     const handleChange = (e) => {
         let inputVal = e.target.value;
         let inputType = e.target.type;
-        console.log(inputType, inputVal)
+        //console.log(inputType, inputVal)
         if ( inputType === "text"){
             setExpense( (prev) => {
                 return {
@@ -45,20 +48,19 @@ function ExpenseForm() {
             })
         }
     }
-
-
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        setExpenseList([...expenseList, expense])
-    }
   return (
-    <form className='expense-form'>
+    <form className='expense-form' style={ newStyle ? { display : "block"} : null}>
         <h2>Enter expense details</h2>
-        <Input handleChange={handleChange} type="text" name="title" placeholder="Enter expense title" label="Expense title"  />
-        <Input handleChange={handleChange} type="date" name="date" placeholder="Enter date" label="Expense date"/>
-        <Input handleChange={handleChange} type="number" name="amount" placeholder="Enter amount" label="Amount" />
-        <button onClick={handleClick}>Add</button>
+        <i onClick={hideForm} className="fa-solid fa-xmark"></i>
+        <Input expense={expense} handleChange={handleChange} type="text" name="title" placeholder="Enter expense title" label="Expense title"  />
+        <Input expense={expense} handleChange={handleChange} type="date" name="date" placeholder="Enter date" label="Expense date"/>
+        <Input expense={expense} handleChange={handleChange} type="number" name="amount" placeholder="Enter amount" label="Amount" />
+        <button 
+        onClick={(e) => {
+                    handleClick(expense,e);
+                    setExpense({title : "",date : "", amount : ""});
+                }
+            }>Add</button>
     </form>
   )
 }

@@ -1,32 +1,42 @@
 import { createContext, useState } from "react";
-
+import uuid from 'react-uuid';
 const TransactionContext = createContext();
 
 export const TransactionProvider = ({children} ) => {
-    const [transaction, setTransaction] = useState([
-        {
-            id : 1,
-            title : "Cafe Holiday",
-            date : "29 Mar 2022",
-            amount : "$49.56"
-        },
-        {
-            id : 2,
-            title : "Cafe Holiday",
-            date : "29 Mar 2022",
-            amount : "$49.56"
-        },
-        {   
-            id : 3,
-            title : "Bike Emi",
-            date : "29 Mar 2022",
-            amount : "$679.56"
-        }
-    ])
+    const [transaction, setTransaction] = useState([])
+
+    const handleClick = (expense,e) => {
+        e.preventDefault();
+        expense.key = uuid();
+        expense.id = transaction.length;
+        console.log(expense);
+        setTransaction((prev) => {
+            return [
+                ...transaction,
+                expense,
+            ]
+        });
+        //console.log(transaction)
+    }
+
+    const deleteTransaction = (id) => {
+        setTransaction( (items) => {
+           return (
+            items.filter( (item) => {
+                return id !== item.id
+            })
+           )
+        })
+    }
+
+    
+
     return (
         <TransactionContext.Provider value={
             {
                 transaction,
+                handleClick,
+                deleteTransaction
             }
         }>
             {children}
@@ -34,8 +44,6 @@ export const TransactionProvider = ({children} ) => {
     )
 }
 
-export const EachExpense = ({children}) => {
-    
-}
+
 
 export default TransactionContext;

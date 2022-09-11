@@ -1,13 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-
+import { useContext } from 'react';
+import StyleContext from '../context/StyleContext';
 
 function FormButton() {
+  const {showForm} = useContext(StyleContext);
   return (
     <div className='form-btn'>
-        <Link to="/form" >
-            Add Transaction
-        </Link>
+        <button onClick={showForm}>Add Transaction</button>
     </div>
   )
 }

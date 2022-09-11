@@ -5,6 +5,7 @@ import ExpenseBody from './components/ExpenseBody';
 import Account from './components/Account';
 import ExpenseForm from './components/ExpenseForm';
 import {TransactionProvider} from "./context/TransactionContext";
+import {StyleProvider} from "./context/StyleContext";
 
 
 
@@ -20,11 +21,13 @@ function App() {
               <>
                 <Sidebar />
                 <ExpenseBody />
-                <Account />
+                <StyleProvider>
+                  <Account />
+                  <ExpenseForm />
+                </StyleProvider>
               </>
             }>
             </Route>
-            <Route path='/form' element={<ExpenseForm />}  />
           </Routes>
         </div>
       </Router>

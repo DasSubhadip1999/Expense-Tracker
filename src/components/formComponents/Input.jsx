@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Input({type,placeholder,name,label,handleChange}) {
+function Input({expense,type,placeholder,name,label,handleChange}) {
   return (
     <div className='inputs'>
         <label htmlFor={name}>{label}</label><br/>
-        <input onChange={handleChange} type={type} placeholder={placeholder} name={name} />
+        <input value={expense[name]}  onChange={handleChange} type={type} placeholder={placeholder} name={name} />
     </div>
   )
 }
