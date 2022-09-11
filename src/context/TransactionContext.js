@@ -61,6 +61,14 @@ export const TransactionProvider = ({children} ) => {
             },0)
         )
     }
+    let titleArr = transaction.map( (item) => {
+        return (item.title).toLowerCase();
+    })
+    //console.log(titleArr)
+    const [searchText, setSearchText] = useState("")
+    const searchExpense = (event) => {
+        //console.log(event.target.value)
+    }
     
     return (
         <TransactionContext.Provider value={
@@ -74,6 +82,7 @@ export const TransactionProvider = ({children} ) => {
                 isDisabled,
                 setIsDisabled,
                 totalExpense,
+                searchExpense,
             }
         }>
             {children}
