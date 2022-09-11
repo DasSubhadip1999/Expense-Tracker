@@ -3,7 +3,7 @@ import uuid from 'react-uuid';
 const TransactionContext = createContext();
 
 export const TransactionProvider = ({children} ) => {
-    let sampleData = { key : "s1", id: "samp1", title : "Bike", date : "2022-09-21", amount : "45678"}
+    let sampleData = { key : "s1", id: "samp1", title : "Bike", date : "2022-09-21", amount : "1000"}
     const [transaction, setTransaction] = useState([sampleData])
 
     //add each expense to list 
@@ -54,6 +54,13 @@ export const TransactionProvider = ({children} ) => {
         }   
     }
 
+    const totalExpense = () => {
+        return (
+            transaction.reduce((acc, curItem) => {
+                return acc + (+curItem.amount)
+            },0)
+        )
+    }
     
     return (
         <TransactionContext.Provider value={
@@ -66,6 +73,7 @@ export const TransactionProvider = ({children} ) => {
                 setEditExpense,
                 isDisabled,
                 setIsDisabled,
+                totalExpense,
             }
         }>
             {children}

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Graphs from './Graphs';
 import FormButton from './FormButton';
+import TransactionContext from '../context/TransactionContext';
 
 function Account() {
+  const {totalExpense} = useContext(TransactionContext)
+ 
+
+
   return (
     <div className='account'>
       <div className='profile'>
@@ -15,7 +20,7 @@ function Account() {
         <div><p>Wallet</p><i className="fa-solid fa-wallet"></i></div>
       </div>
       <Graphs type="income" amount="145,000" />
-      <Graphs type="expense" amount="89,000" />
+      <Graphs type="expense" amount={totalExpense()} />
       <FormButton />
     </div>
   )
