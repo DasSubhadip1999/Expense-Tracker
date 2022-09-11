@@ -4,6 +4,7 @@ import TransactionContext from '../context/TransactionContext';
 
 function TransactionItem({title, date, amount,id}) {
   const {deleteTransaction, editExpenseFn, } = useContext(TransactionContext);
+  //object with data from item to send to form
   let expenseItem = {id,title, date, amount}
   return (
     <div className='transaction-item'>

@@ -6,6 +6,7 @@ import TransactionContext from '../context/TransactionContext';
 
 
 function TransactionList() {
+  //whole array from context to create each item
   const {transaction} = useContext(TransactionContext);
   return (
     <div className='transaction-list'>
