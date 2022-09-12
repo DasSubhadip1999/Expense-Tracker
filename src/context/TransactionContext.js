@@ -1,11 +1,19 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import uuid from 'react-uuid';
 const TransactionContext = createContext();
 
 export const TransactionProvider = ({children} ) => {
-    let sampleData = { key : "s1", id: "samp1", title : "Bike", date : "2022-09-21", amount : "1000"}
-    const [transaction, setTransaction] = useState([sampleData])
+    
+    const [transaction, setTransaction] = useState([]);
 
+    const fetchTransaction = async () => {
+        let res = await fetch("http://localhost:5000/transaction")
+        let data = await res.json();
+        setTransaction(data)
+    }
+    useEffect(() => {
+        fetchTransaction();
+    },[])
     //add each expense to list 
     const handleClick = (expense, editExpense, e) => {
         e.preventDefault();
@@ -61,6 +69,7 @@ export const TransactionProvider = ({children} ) => {
             },0)
         )
     }
+    //searching expense
     let titleArr = transaction.map( (item) => {
         return (item.title).toLowerCase();
     })
