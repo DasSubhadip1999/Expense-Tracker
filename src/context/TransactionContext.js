@@ -2,36 +2,52 @@ import { createContext, useEffect, useState } from "react";
 import uuid from 'react-uuid';
 const TransactionContext = createContext();
 
+
 export const TransactionProvider = ({children} ) => {
     
     const [transaction, setTransaction] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchTransaction = async () => {
-        let res = await fetch("http://localhost:5000/transaction")
+        let res = await fetch("/transaction?_sort=id&_order=desc");
         let data = await res.json();
-        setTransaction(data)
+        setTransaction(data);
+        setIsLoading(false);
     }
     useEffect(() => {
         fetchTransaction();
     },[])
+
     //add each expense to list 
-    const handleClick = (expense, editExpense, e) => {
+    const handleClick = async (expense, editExpense, e) => {
         e.preventDefault();
         expense.key = uuid();
         //for edit mode
         if(editExpense.edit) {
+            const res = await fetch(`/transaction/${expense.id}`, {
+                method : "PUT",
+                headers : {"Content-Type" : "application/json"},
+                body : JSON.stringify(expense)
+            })
+            const data = await res.json();
             let newTransaction = transaction.map((item) => {
                 return expense.id === item.id ? {
-                    ...item, ...expense
+                    ...item, ...data
                 } : item
             })
-            setTransaction(newTransaction)
+            setTransaction(newTransaction);
         }else { //normal add 
-            expense.key = uuid();
-            expense.id = transaction.length;
-            //console.log(expense);
+            const res = await fetch("/transaction", {
+                method : "POST",
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify(expense)
+            })
+            const data = await res.json()
+            
             setTransaction((prev) => {
-                return [...transaction,expense]
+                return [data,...prev]
             });
         }
         //console.log(transaction)
@@ -50,8 +66,10 @@ export const TransactionProvider = ({children} ) => {
     const [isDisabled, setIsDisabled] = useState(false)
 
     // delete expense from the list
-    const deleteTransaction = (id) => {
+    const deleteTransaction = async (id) => {
         if(window.confirm("Are you sure, you want to delete")){
+            await fetch( `/transaction/${id}`, {method : "DELETE"} )
+
             setTransaction( (items) => {
                 return (
                  items.filter( (item) => {
@@ -69,10 +87,7 @@ export const TransactionProvider = ({children} ) => {
             },0)
         )
     }
-    //searching expense
-    let titleArr = transaction.map( (item) => {
-        return (item.title).toLowerCase();
-    })
+    
     //console.log(titleArr)
     const [searchText, setSearchText] = useState("")
     const searchExpense = (event) => {
@@ -92,6 +107,7 @@ export const TransactionProvider = ({children} ) => {
                 setIsDisabled,
                 totalExpense,
                 searchExpense,
+                isLoading,
             }
         }>
             {children}

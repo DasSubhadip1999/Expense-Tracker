@@ -9,12 +9,12 @@ code {
   margin: 0;
 }
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 98vw;
   font-family: 'Poppins', sans-serif;
   background-color: #f1f1f1;
 }
 .container {
+  height: 80vh;
   padding: 4rem;
   display: flex;
   position: relative;
@@ -171,14 +171,36 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   place-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+.transaction-list {
+  position: relative;
+  overflow-y: auto;
+  max-height: 375px;
+}
+.transaction-list::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+  border-radius: 4px;
+}
+.transaction-list::-webkit-scrollbar {
+  width: 8px;
+	background-color: #F5F5F5;
+}
+.transaction-list::-webkit-scrollbar-thumb {
+	background-color: #fe7798;
+  border-radius: 4px;
+}
 .transaction-list h3 {
   font-size: 22px;
   padding-left: 2.5rem;
   margin-bottom: 0.6rem;
   color: rgba(0, 0, 0, 0.69);
+  position: sticky;
+  top : 0;
+  background-color: #f1f1f1;
+  z-index: 1;
 }
 .transaction-item {
-  margin-bottom: 1.5rem;
+  margin: 0 0.5rem 1.5rem 0.5rem;
   border-radius: 7px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: white;
@@ -226,6 +248,12 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
 .graphs p {
   margin: 0.2rem 0;
 }
+.graph-line {
+  border: 1px solid red;
+  padding: 0px 5px;
+  min-height: 50px;
+  
+}
 
 .expense-form {
   width: 40%;
@@ -237,6 +265,7 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   border-radius: 7px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: none;
+  z-index: 2;
 }
 .fa-xmark {
   position: absolute;

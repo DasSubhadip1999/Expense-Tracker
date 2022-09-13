@@ -1,34 +1,18 @@
 {
   "transaction": [
     {
-      "id": 1,
-      "title": "This is from json 1",
-      "date": "2022-09-22",
-      "amount": 1000
+      "title": "test 2",
+      "date": "2022-09-14",
+      "amount": "100",
+      "key": "dd388e3-6d6c-3cd-8d6b-7c4326a8548b",
+      "id": 2
     },
     {
-      "id": 2,
-      "title": "This is from json 2",
-      "date": "2022-09-22",
-      "amount": 1000
-    },
-    {
-      "id": 3,
-      "title": "This is from json 3",
-      "date": "2022-09-22",
-      "amount": 1000
-    },
-    {
-      "title": "coming from postman",
-      "date": "2022-09-22",
-      "amount": "1200",
-      "id": 4
-    },
-    {
-      "title": "second data from postman",
-      "date": "2022-09-25",
-      "amount": "1400",
-      "id": 5
+      "title": "Hello",
+      "date": "2022-09-14",
+      "amount": "1234",
+      "key": "84452b8-8de1-ee2e-d44f-b55fe25088dd",
+      "id": 3
     }
   ]
 }
