@@ -88,6 +88,11 @@ export const TransactionProvider = ({children} ) => {
         )
     }
     
+    const leftAmount = () => {
+        let totalIncome = 145000;
+        let tE = totalExpense();
+        return totalIncome - tE;
+    }
     //console.log(titleArr)
     const [searchText, setSearchText] = useState("")
     const searchExpense = (event) => {
@@ -108,6 +113,7 @@ export const TransactionProvider = ({children} ) => {
                 totalExpense,
                 searchExpense,
                 isLoading,
+                leftAmount
             }
         }>
             {children}

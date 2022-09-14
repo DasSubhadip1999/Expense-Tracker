@@ -47,15 +47,15 @@ body {
   margin: 0 2.3rem;
 }
 .account {
+  width: 20%;
   /* border: 1px solid blue; */
   padding: 1rem;
 }
 .profile {
-  width: 19%;
   background-color: #efefef;
-  width: 100%;
+  width: 84%;
   border-radius: 7px;
-  padding: 0.5rem 0;
+  padding: 1.2rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .image {
@@ -70,19 +70,43 @@ body {
   border-radius: 50%;
   border: 6px solid rgba(128, 128, 128, 0.899);
 }
-.profile h4, .profile h4+div, .profile h4+div+div,.profile h4+div+div+div {
-  margin: 0.5rem 0;
-  padding: 0 3.1rem;
+.profile > h4 {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #fe7798;
+  padding: 0.1rem 0;
 }
-h4 + div, h4 + div + div, h4 + div + div+ div {
+.profile>h4+div, .profile> h4+div+div,.profile> h4+div+div+div {
+  margin: 0.5rem 0;
   display: flex;
   justify-content: space-between;
 }
-.fa-pen, .fa-gear, .fa-wallet, .fa-magnifying-glass {
+.profile > h4 + div > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.profile input {
+  border: 1px solid rgba(0, 0, 0, 0.36);
+  width: 75%;
+  padding: 3px 5px;
+  outline: none;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
+
+.fa-check, .fa-pen, .fa-gear, .fa-wallet, .fa-magnifying-glass {
   font-size: 14px;
   padding-top: 3px;
   color: rgba(0, 0, 0, 0.789);
   cursor: pointer;
+}
+.fa-pen:hover {
+  color: #1088e4;
+}
+.fa-check:hover {
+  scale: 1.2;
 }
 
 
@@ -249,10 +273,33 @@ h4 + div, h4 + div + div, h4 + div + div+ div {
   margin: 0.2rem 0;
 }
 .graph-line {
-  border: 1px solid red;
+  border-bottom: 1px solid #fe7798;
   padding: 0px 5px;
   min-height: 50px;
-  
+  display: flex;
+  margin-bottom: 5px;
+}
+.graph-bar {
+  list-style-type: none;
+  /* border: 1px solid red; */
+  width: 12px;
+  height: 50px;
+  margin: 0 3px;
+  position: relative;
+}
+.graph-bar span {
+  position: absolute;
+  bottom: -25%;
+  left: 20%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 900;
+}
+.bars {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  max-height: 50px;
 }
 
 .expense-form {
